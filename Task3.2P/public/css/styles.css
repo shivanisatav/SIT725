@@ -1,0 +1,26 @@
+.navbar-size {
+    width: 95%;
+    margin: 0 auto;
+    background-color: #1e1e2f;
+}
+.user-image-size {
+    height: 60px;
+    margin: 5px 0;
+}
+.main-body {
+    background-color: #202040;
+    color: white;
+    height: calc(100vh - 64px);
+}
+.materialboxed-image {
+    margin: 0 auto;
+    height: 400px;
+}
+.click-me-button {
+    background-color: #ff9800;
+    margin-top: 30px;
+}
+.card-reveal p {
+    color: black; 
+    font-size: 16px;
+}
