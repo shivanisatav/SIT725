@@ -1,0 +1,21 @@
+{
+  "name": "task6.2d",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "chai": "^5.2.0",
+    "jquery": "^3.7.1",
+    "jsdom": "^26.1.0",
+    "mocha": "^11.1.0",
+    "request": "^2.88.2"
+  }
+}
