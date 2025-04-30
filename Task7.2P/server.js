@@ -8,7 +8,7 @@ const socketIo = require("socket.io");
 const enquiryRoutes = require("./routes/enquiryRoutes");
 
 const app = express();
-const port = process.env.PORT || 3004;
+const port = process.env.PORT || 3000;
 const server = http.createServer(app); 
 const io = socketIo(server); 
 

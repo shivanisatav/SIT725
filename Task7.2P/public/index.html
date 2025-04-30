@@ -97,38 +97,41 @@
     <script src="js/scripts.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
-    const socket = io();
-    // Emit message when form is submitted successfully
-    $('#formSubmit').click(() => {
-        let formData = {
-        first_name: $('#first_name').val(),
-        last_name: $('#last_name').val(),
-        password: $('#password').val(),
-        email: $('#email').val()
+        const socket = io();
+        
+        // Submit form logic
+        const submitForm = () => {
+            let formData = {
+                first_name: $('#first_name').val(),
+                last_name: $('#last_name').val(),
+                password: $('#password').val(),
+                email: $('#email').val()
+            };
+            $.ajax({
+                url: '/api/enquiry',
+                type: 'POST',
+                data: JSON.stringify(formData),
+                contentType: 'application/json',
+                success: function (response) {
+                    alert("Form submitted successfully!");
+                    socket.emit("message", `New enquiry submitted by ${formData.first_name} ${formData.last_name}`);
+                    $('#first_name').val('');
+                    $('#last_name').val('');
+                    $('#password').val('');
+                    $('#email').val('');
+                },
+                error: function () {
+                    alert("There was an error submitting the form.");
+                }
+            });
         };
-        $.ajax({
-            url: '/api/enquiry',
-            type: 'POST',
-            data: JSON.stringify(formData),
-            contentType: 'application/json',
-            success: function (response) {
-                alert("Form submitted successfully!");
-                socket.emit("message", `New enquiry submitted by ${formData.first_name} ${formData.last_name}`);
-                $('#first_name').val('');
-                $('#last_name').val('');
-                $('#password').val('');
-                $('#email').val('');
-            },
-            error: function () {
-                alert("There was an error submitting the form.");
-            }
+        
+        // Socket listener for messages from server
+        socket.on("message", (data) => {
+          console.log("Socket message from server:", data);
         });
-    });
-    // Listen for messages from server to display on terminal
-    socket.on("message", (data) => {
-        console.log("Socket message from server:", data);
-    });
     </script>
+        
 
 </body>
     
